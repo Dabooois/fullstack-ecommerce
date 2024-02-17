@@ -14,7 +14,7 @@ const port = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
 
-app.use('/register', validateData(UserRegistrationSchema), userRouter)
+app.use('/register', userRouter)
 
 app.get("/:id", (req: Request, res: Response) => {
 

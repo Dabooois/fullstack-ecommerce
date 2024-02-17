@@ -6,10 +6,12 @@ import * as userController from '../controller/userController';
 
 const userRouter = express.Router();
 
-userRouter.get('/', validateData(UserRegistrationSchema), userController.registerUser);
-userRouter.post('/', validateData(UserRegistrationSchema), userController.registerUser);
 
-userRouter.post('/', validateData(UserRegistrationSchema), userController.registerUser);
-// userRouter.post('/login', validateData(userLoginSchema), loginUser);
+userRouter.route('/')
+  .get(validateData(UserRegistrationSchema), userController.registerUser)
+  .post();
+
+
+// userRouter.get(':id').get()  get by param
 
 export default userRouter;
