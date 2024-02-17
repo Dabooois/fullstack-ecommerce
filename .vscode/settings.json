@@ -3,7 +3,7 @@
     "files.trimTrailingWhitespace": true,
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.eslint": "explicit",
     },
     "[prisma]": {
       "editor.formatOnSave": true
@@ -16,5 +16,4 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
