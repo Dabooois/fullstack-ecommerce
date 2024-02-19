@@ -8,8 +8,8 @@ const userRouter = express.Router();
 
 
 userRouter.route('/')
-  .get(validateData(UserRegistrationSchema), userController.registerUser)
-  .post();
+  // .get()
+  .post(userController.registerUser);
 
 
 // userRouter.get(':id').get()  get by param

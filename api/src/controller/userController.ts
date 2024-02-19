@@ -1,24 +1,66 @@
+import {
+	TUserRegistration,
+	UserRegistrationSchema,
+} from './../schemas/userSchema';
 
-import { TUserRegistration } from '../schemas/userSchema';
 import { CustomRequest, CustomResponse } from '../utils/customType';
 import { Request, Response } from 'express';
-
+import { parseSchema } from '../utils/parseError';
 
 export const loginUser = (req: Request, res: Response) => {
-  // Handle user login logic using validated data from req.body
-  res.json({ message: 'User logged in successfully', data: req.body });
+	// Handle user login logic using validated data from req.body
+	res.json({ message: 'User logged in successfully', data: req.body });
 };
 
+export const registerUser = async (
+	req: CustomRequest<TUserRegistration, { offset: number; limit: number }>,
+	res: CustomResponse<
+		{
+			data: TUserRegistration;
+			message: string;
+			pageInfo: { offset: number; limit: number };
+		},
+		{ message: string }[] | string
+	>
+) => {
+	try {
+		const parsedBody = await parseSchema(UserRegistrationSchema, req.body);
+
+		if (parsedBody.ok === false) {
+
+			res.status(400).json({
+				ok: false,
+				error: parsedBody.error,
+			});
+
+		} else {
+			const { email, password, username, age } = parsedBody.data;
+			res.json({
+				ok: true,
+				data: {
+					pageInfo: {
+						limit: req.query.limit,
+						offset: req.query.offset,
+					},
+					data: {
+						email,
+						password,
+						username,
+						age
+					},
+					message: 'hello',
+				},
+			});
+		}
 
 
-export const registerUser = (req: CustomRequest<TUserRegistration, any>, res: CustomResponse<{ data: TUserRegistration, message: string }, Error>) => {
 
-  res.json({
-    ok: true,
-    data: {
-      data: req.body,
-      message: 'hello'
-    }
-  });
+
+	} catch (e) {
+		const result = (e as Error).message;
+		res.status(400).json({
+			error: result,
+			ok: false,
+		});
+	}
 };
-

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
-import { TOkayable } from './TOkayable'
+import { TOkayable } from './tokayable'
+
 
 
 export type CustomRequest<T, E> = Request<any, any, T, E>
