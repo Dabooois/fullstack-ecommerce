@@ -1,7 +1,7 @@
 import {
 	TUserRegistration,
 	UserRegistrationSchema,
-} from './../schemas/userSchema';
+} from '../models/userSchema';
 
 import { CustomRequest, CustomResponse } from '../utils/customType';
 import { Request, Response } from 'express';

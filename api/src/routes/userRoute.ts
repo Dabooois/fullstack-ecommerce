@@ -1,8 +1,8 @@
 // src/routes/userRoutes.ts
 import express from 'express';
-import { validateData } from '../middleware/validationMiddleware';
-import { UserRegistrationSchema, userLoginSchema } from '../schemas/userSchema';
-import * as userController from '../controller/userController';
+import { validateData } from '../middlewares/validationMiddleware';
+import { UserRegistrationSchema, userLoginSchema } from '../models/userSchema';
+import * as userController from '../controllers/userController';
 
 const userRouter = express.Router();
 

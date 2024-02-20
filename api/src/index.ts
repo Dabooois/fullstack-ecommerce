@@ -2,9 +2,9 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import { validateData } from "./middleware/validationMiddleware";
-import { UserRegistrationSchema } from "./schemas/userSchema";
-import { registerUser } from "./controller/userController";
+import { validateData } from "./middlewares/validationMiddleware";
+import { UserRegistrationSchema } from "./models/userSchema";
+import { registerUser } from "./controllers/userController";
 import userRouter from "./routes/userRoute";
 
 dotenv.config();
